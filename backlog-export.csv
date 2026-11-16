@@ -1,0 +1,110 @@
+Issue key,Issue Type,Summary,Epic Link,Epic Name,Status,Priority,Created,Updated,Labels,Description,Acceptance Criteria
+WMP-1,Epic,Meterstanden,,Meterstanden,Done,Medium,27/01/2025 10:00,01/10/2026 10:00,portaal,,
+WMP-2,Epic,Verbruik,,Verbruik,Done,Medium,27/01/2025 10:00,01/10/2026 10:00,portaal,,
+WMP-3,Epic,Termijnbedrag,,Termijnbedrag,Done,Medium,27/01/2025 10:00,01/10/2026 10:00,portaal,,
+WMP-4,Epic,Facturen en herinneringen,,Facturen en herinneringen,Done,Medium,27/01/2025 10:00,01/10/2026 10:00,portaal,,
+WMP-5,Epic,Contracten,,Contracten,Done,Medium,27/01/2025 10:00,01/10/2026 10:00,portaal,,
+WMP-6,Epic,Verhuizen,,Verhuizen,Done,Medium,27/01/2025 10:00,01/10/2026 10:00,portaal,,
+WMP-7,Epic,Account en aanmelden,,Account en aanmelden,Done,Medium,27/01/2025 10:00,01/10/2026 10:00,portaal,,
+WMP-8,Epic,Dynamische prijzen,,Dynamische prijzen,Done,Medium,27/01/2025 10:00,01/10/2026 10:00,publiek,,
+WMP-9,Epic,Afrekeningen in het portaal,,Afrekeningen in het portaal,Done,Medium,27/01/2025 10:00,01/10/2026 10:00,portaal,,
+WMP-10,Epic,Backoffice,,Backoffice,Done,Medium,27/01/2025 10:00,01/10/2026 10:00,backoffice,,
+WMP-11,Epic,REST API,,REST API,Done,Medium,27/01/2025 10:00,01/10/2026 10:00,api,,
+WMP-12,Story,Meterstand doorgeven,WMP-1,,Done,High,03/02/2025 10:00,30/06/2025 10:00,portaal,"Als klant met een meter zonder slimme uitlezing wil ik zelf mijn meterstanden doorgeven, zodat mijn afrekening op echte standen is gebaseerd.","- De klant geeft per telwerk een stand op, met een datum (standaard vandaag).
+- Een stand met datum D geldt als de stand aan het begin van dag D (00:00 uur).
+- De datum mag niet in de toekomst liggen en moet ná de datum van de laatst bekende stand liggen.
+- Komma en punt zijn allebei toegestaan als decimaalteken; maximaal drie decimalen.
+- Een nieuwe stand mag niet lager zijn dan de vorige stand van hetzelfde telwerk. Zo'n stand wordt geweigerd met een foutmelding, tenzij het om een meteromloop gaat (WMP-13).
+- Voor slimme meters kan de klant geen standen doorgeven."
+WMP-13,Story,Meteromloop herkennen,WMP-1,,Done,Medium,03/02/2025 10:00,12/05/2025 10:00,portaal,"Als klant wil ik een stand kunnen doorgeven nadat mijn meter is rondgelopen, zodat mijn verbruik klopt.","- Meters hebben een telwerk van 5 cijfers en lopen na 99.999 door naar 0.
+- Een lagere stand geldt als omloop als de vorige stand 90.000 of hoger was én de nieuwe stand lager dan 10.000 is.
+- Het verbruik over de omloop is: (100.000 − vorige stand) + nieuwe stand. Voorbeeld: van 99.950 naar 120 is 170 kWh verbruik.
+- Het verbruik over de omloop telt mee in het verbruiksoverzicht en in de afrekening."
+WMP-14,Story,Plausibiliteitscontrole meterstand,WMP-1,,Done,Medium,10/02/2025 10:00,02/04/2025 10:00,portaal,"Als klant wil ik een waarschuwing krijgen als mijn stand onwaarschijnlijk hoog lijkt, zodat ik tikfouten kan herstellen.","- Als een stand een gemiddeld verbruik per dag sinds de vorige stand betekent dat meer dan 5 keer zo hoog is als het gemiddelde dagverbruik van die meter (berekend over alle eerdere standen van dat telwerk), krijgt de klant een waarschuwing.
+- De klant kan de stand dan bevestigen; daarna wordt hij opgeslagen."
+WMP-20,Story,Verbruikspagina,WMP-2,,Done,High,17/02/2025 10:00,06/10/2025 10:00,portaal,"Als klant wil ik mijn verbruik per aansluiting zien, zodat ik inzicht krijg in mijn energiegebruik.","- Per aansluiting kan de klant het verbruik bekijken per uur (alleen slimme meters), per dag, per maand en per jaar, als grafiek én als tabel met dezelfde getallen.
+- De verbruikspagina toont alleen gemeten verbruik: bij meters zonder slimme uitlezing loopt het overzicht tot de laatst bekende meterstand.
+- Getoond worden: totaal verbruik, gemiddeld per dag (totaal gedeeld door het aantal dagen in de gekozen periode, begin- en einddatum inbegrepen) en, bij zonnepanelen, de teruglevering apart van het verbruik.
+- Eenheden: elektriciteit in kWh, gas in m³ (in de grafiek, de tabel en de totalen).
+- Verbruik per dag van elektriciteit wordt getoond per kalenderdag in Nederlandse tijd (00:00–24:00).
+- Heeft een aansluiting nog geen meterstanden of meetgegevens, dan toont de pagina een melding dat er nog geen verbruiksgegevens zijn."
+WMP-21,Story,Eigen periode kiezen op de verbruikspagina,WMP-2,,Done,Medium,17/02/2025 10:00,19/08/2025 10:00,portaal,"Als klant wil ik zelf een periode kiezen, zodat ik precies de dagen zie die mij interesseren.","- De klant kan een eigen periode kiezen (van/tot en met).
+- De einddatum moet in het verleden liggen.
+- Een periode van één dag (begindatum gelijk aan einddatum) is toegestaan.
+- Per uur kan maximaal 31 dagen worden getoond, anders maximaal 3 jaar."
+WMP-22,Story,Vergelijken met vorig jaar,WMP-2,,Done,Low,03/03/2025 10:00,19/08/2025 10:00,portaal,Als klant wil ik mijn verbruik vergelijken met dezelfde periode een jaar eerder.,"- Optioneel wordt vergeleken met dezelfde periode een jaar eerder.
+- Vergelijken is niet beschikbaar per uur."
+WMP-23,Story,Verbruik exporteren naar CSV,WMP-2,,Won't Do,Low,03/03/2025 10:00,10/11/2025 10:00,portaal,"Als klant wil ik mijn verbruik als CSV downloaden, zodat ik het in een spreadsheet kan analyseren.","- Op de verbruikspagina staat een knop 'Exporteren' die de getoonde tabel als CSV downloadt.
+- Scheidingsteken ';' en decimale komma."
+WMP-30,Story,Termijnbedrag wijzigen,WMP-3,,Done,High,10/03/2025 10:00,22/09/2025 10:00,portaal,"Als klant wil ik mijn termijnbedrag aanpassen, zodat ik bij mijn jaarafrekening niet voor verrassingen kom te staan.","- De klant ziet het geadviseerde bedrag (berekening: zie notitie afrekenregels).
+- De klant kan zelf een termijnbedrag kiezen tussen 75% en 200% van het geadviseerde bedrag (grenzen inbegrepen), met maximaal twee decimalen (centen zijn toegestaan).
+- Deze grenzen gelden in het portaal én in de API.
+- Een gewijzigd termijnbedrag gaat in op de eerste dag van de volgende maand.
+- De klant ontvangt een bevestiging per e-mail."
+WMP-40,Story,Facturen bekijken,WMP-4,,Done,Medium,17/03/2025 10:00,07/07/2025 10:00,portaal,Als klant wil ik mijn facturen en creditfacturen bekijken en afdrukken.,"- Facturen en creditfacturen zijn te bekijken en af te drukken als HTML-pagina.
+- Een creditfactuur toont het terug te ontvangen bedrag."
+WMP-41,Story,Betaaltermijn en herinneringen,WMP-4,,Done,High,17/03/2025 10:00,26/01/2026 10:00,portaal,"Als Wattson wil ik klanten op tijd herinneren aan openstaande facturen, zodat zij niet onnodig in de problemen komen.","- Een factuur moet binnen 14 dagen na de factuurdatum worden betaald (vervaldatum = factuurdatum + 14 dagen). De vervaldatum is de laatste dag waarop op tijd betaald kan worden.
+- De eerste herinnering wordt verstuurd op de dag ná de vervaldatum, als de factuur dan nog openstaat. Voorbeeld: factuurdatum 6 november, vervaldatum 20 november, eerste herinnering op 21 november.
+- Een aanmaning volgt 14 dagen na de eerste herinnering.
+- Herinneringen en aanmaningen worden per e-mail verstuurd en staan ook op de factuur."
+WMP-50,Story,Contract beëindigen,WMP-5,,Done,High,07/04/2025 10:00,09/02/2026 10:00,portaal,Als klant wil ik mijn contract kunnen beëindigen en vooraf zien wat dat kost.,"- Bedenktijd: een nieuw contract kan tot en met 14 dagen na de datum van ondertekening kosteloos worden beëindigd, ongeacht het type contract en ook als de levering nog niet is begonnen.
+- Na de bedenktijd betaalt de klant bij een vast contract een opzegvergoeding (berekening: zie notitie afrekenregels).
+- Variabele en dynamische contracten kunnen altijd kosteloos worden beëindigd.
+- De einddatum mag niet in het verleden en niet na de einddatum van het contract liggen.
+- Vóór bevestiging ziet de klant de kosten.
+- Na beëindiging ontvangt de klant een bevestiging per e-mail en, als er een opzegvergoeding is, een factuur."
+WMP-51,Story,Verlengingsaanbod vast contract,WMP-5,,Done,Medium,07/04/2025 10:00,01/09/2025 10:00,portaal,Als klant met een vast contract wil ik op tijd een verlengingsaanbod krijgen.,"- Vanaf 30 dagen vóór de einddatum van een vast contract krijgt de klant een verlengingsaanbod (e-mail en in het portaal).
+- Het aanbod geldt per contract: een klant met stroom en gas krijgt dus twee aanbiedingen en twee e-mails.
+- Na acceptatie gaat het nieuwe contract in op de dag na de einddatum van het oude.
+- Ook voor het nieuwe contract geldt de bedenktijd (WMP-50)."
+WMP-60,Story,Verhuizing doorgeven,WMP-6,,Done,High,22/04/2025 10:00,16/03/2026 10:00,portaal,"Als klant wil ik mijn verhuizing zelf doorgeven, zodat de levering op mijn nieuwe adres doorloopt.","- De klant zoekt het nieuwe adres op postcode en huisnummer. Een huisnummer kan een toevoeging hebben, bijvoorbeeld 12-A, 12A, 12 A of 201-2; al deze schrijfwijzen werken.
+- De klant kiest het adres en vult ter controle de EAN-code (elektriciteit) van het nieuwe adres in. Spaties in de EAN-code zijn toegestaan.
+- De klant kiest een verhuisdatum: van 30 dagen in het verleden tot en met 6 maanden vooruit (gerekend vanaf vandaag). De datumkiezer en de controle bij het versturen hanteren dezelfde grenzen.
+- De klant geeft de eindstanden van het oude adres op (bij meters zonder slimme uitlezing) en de beginstanden van het nieuwe adres (als daar geen slimme meter is).
+- Na het versturen ontvangt de klant één bevestigingsmail.
+- Een verhuizing wordt één keer geregistreerd: dubbel klikken of opnieuw versturen leidt niet tot een tweede verhuizing of een tweede bevestiging.
+- De levering op het oude adres loopt tot en met de verhuisdatum; op het nieuwe adres vanaf de verhuisdatum.
+- Het contract (type en einddatum) gaat mee naar het nieuwe adres."
+WMP-70,Story,Klant worden via Aanmelden,WMP-7,,Done,High,24/02/2025 10:00,20/10/2025 10:00,portaal,Als bezoeker wil ik online klant worden.,"- Via Aanmelden kiest een nieuwe klant een adres, controleert de EAN-code, kiest een contract en een startdatum (vandaag tot 1 maand vooruit) en maakt een account aan.
+- Het wachtwoord voldoet aan de eisen van WMP-72.
+- Het termijnbedrag wordt geschat op basis van het opgegeven verwachte verbruik.
+- De klant ontvangt een welkomstmail."
+WMP-71,Story,Wachtwoord vergeten,WMP-7,,Done,High,24/02/2025 10:00,16/06/2025 10:00,portaal,Als klant wil ik een nieuw wachtwoord kunnen instellen als ik het mijne kwijt ben.,"- De klant ontvangt een e-mail met een herstellink.
+- De link is 1 uur geldig en kan één keer worden gebruikt."
+WMP-72,Story,Wachtwoordeisen,WMP-7,,Done,Medium,24/02/2025 10:00,11/03/2025 10:00,portaal,Als Wattson wil ik dat klanten een veilig wachtwoord kiezen.,"- Een wachtwoord heeft minimaal 6 tekens.
+- Bij een te kort wachtwoord krijgt de klant een melding in het formulier."
+WMP-73,Story,"Profiel, meldingen en uitloggen",WMP-7,,Done,Medium,03/03/2025 10:00,08/09/2025 10:00,portaal,Als klant wil ik mijn gegevens en voorkeuren zelf beheren.,"- Profiel: naam, telefoonnummer en IBAN wijzigen; wachtwoord wijzigen; API-token aanmaken.
+- Meldingen: voorkeuren voor nieuws, facturen en verbruiksoverzichten. Serviceberichten worden altijd verstuurd.
+- Uitloggen in het portaal beëindigt de sessie."
+WMP-74,Story,Inloggen met DigiD,WMP-7,,To Do,Low,05/05/2025 10:00,31/08/2026 10:00,portaal,"Als klant wil ik met DigiD inloggen, zodat ik geen apart wachtwoord hoef te onthouden.","- Op de inlogpagina staat een knop 'Inloggen met DigiD'.
+- Gepland voor 2027."
+WMP-80,Story,Pagina dynamische prijzen,WMP-8,,Done,High,19/05/2025 10:00,01/12/2025 10:00,publiek,"Als klant met een dynamisch contract wil ik de uurprijzen zien, zodat ik mijn verbruik kan plannen.","- De uurprijzen voor morgen worden dagelijks om 13:00 uur gepubliceerd.
+- Op de pagina Dynamische prijzen staan de prijzen van vandaag en, na 13:00 uur, van morgen. Vóór 13:00 uur meldt de pagina dat de prijzen voor morgen nog niet beschikbaar zijn.
+- De pagina toont per uur de kale prijs (excl. btw) en de all-in prijs: (kale prijs + inkoopvergoeding) × 1,21, afgerond op 5 decimalen.
+- Als advies staan de drie goedkoopste uren en het goedkoopste aaneengesloten blok van drie uur vermeld."
+WMP-90,Story,Proefafrekening,WMP-9,,Done,High,02/06/2025 10:00,13/04/2026 10:00,portaal,"Als klant wil ik een proefafrekening maken, zodat ik weet waar ik sta.","- De klant kan op elk moment een proefafrekening maken over een zelfgekozen periode in het verleden; de beheerder kan dat voor elke klant.
+- De berekening volgt de notitie afrekenregels.
+- De periode mag niet beginnen vóór de startdatum van de levering en niet vóór het begin van de verbruikshistorie, moet eindigen vóór vandaag en mag maximaal 366 dagen lang zijn."
+WMP-91,Story,Jaarafrekeningen en saldo in het portaal,WMP-9,,Done,Medium,02/06/2025 10:00,23/02/2026 10:00,portaal,"Als klant wil ik mijn jaarafrekeningen, het saldo en het voorstel voor mijn nieuwe termijnbedrag zien.","- De klant ziet per jaarafrekening de regels, het totaal, de ontvangen termijnen, het saldo en het voorgestelde termijnbedrag.
+- Na de jaarafrekening ontvangt de klant een e-mail."
+WMP-100,Story,Dashboard backoffice,WMP-10,,Done,Medium,07/07/2025 10:00,24/11/2025 10:00,backoffice,Als beheerder wil ik in één oogopslag zien hoe het ervoor staat.,"- Het dashboard toont het aantal klanten, het aantal klanten per contractsoort (klanten met een actief contract van die soort), het openstaand saldo (som van alle openstaande facturen) en het aantal mislukte incasso's deze maand."
+WMP-101,Story,Klanten zoeken en beheren,WMP-10,,Done,High,07/07/2025 10:00,12/01/2026 10:00,backoffice,Als beheerder wil ik klanten vinden en hun gegevens beheren.,"- Zoeken op naam, e-mail, klantnummer, postcode, straat of EAN-code (spaties toegestaan).
+- Per klant: gegevens, adressen, aansluitingen, contracten, incasso's, facturen, afrekeningen en een proefafrekening.
+- Per aansluiting: meterstanden corrigeren (een correctie mag niet lager zijn dan de vorige of hoger dan de volgende stand, behalve bij een omloop) en een meterwissel registreren."
+WMP-102,Story,Tariefbeheer,WMP-10,,Done,Medium,21/07/2025 10:00,13/10/2025 10:00,backoffice,Als beheerder wil ik nieuwe variabele tarieven invoeren.,"- Nieuwe tarieven voor het variabele contract (en het gastarief van het dynamische contract) met een ingangsdatum in de toekomst.
+- Vaste contracten hebben een vaste prijs.
+- Nieuwe prijzen verschijnen ook op de publieke tarievenpagina."
+WMP-103,Story,Jaarafrekeningen en batch,WMP-10,,Done,High,21/07/2025 10:00,04/05/2026 10:00,backoffice,"Als beheerder wil ik jaarafrekeningen opmaken, los of in een batch, en de resultaten exporteren.","- Jaarafrekening voor één klant, of een batch voor alle klanten met een afrekendatum tot en met een gekozen datum.
+- Van elke batch is een CSV-export beschikbaar (scheidingsteken ';', decimale komma) met de kolommen klantnummer;naam;periode_van;periode_tot;totaal_incl_btw;ontvangen_termijnen;saldo;nieuw_termijnbedrag.
+- Ook een batch zonder resultaten kan worden geëxporteerd (alleen de kopregel)."
+WMP-104,Story,Tijd simuleren en database terugzetten,WMP-10,,Done,Medium,04/08/2025 10:00,29/06/2026 10:00,backoffice,"Als tester wil ik tijd kunnen verzetten, zodat ik termijnen en herinneringen kan testen zonder te wachten.","- Tijd instellen: de beheerder zet de applicatiedatum en -tijd op een gekozen moment. Daarna worden incasso's, herinneringen, statuswijzigingen van contracten en verlengingsaanbiedingen voor de nieuwe datum verwerkt.
+- Per klant: 'Jaarafrekening nu laten vervallen' (afrekendatum = vandaag) en 'Contracten ouder maken' (alle contractdatums van de klant een aantal dagen terug).
+- Database terugzetten: zet alle gegevens terug naar de startsituatie."
+WMP-110,Story,REST API voor klanten,WMP-11,,Done,High,18/08/2025 10:00,30/03/2026 10:00,api,Als klant met eigen software wil ik mijn gegevens via een API opvragen en doorgeven.,"- Documentatie (OpenAPI) op /api/docs, specificatie op /api/openapi.json. Basis-URL: /api/v1.
+- Authenticatie met een bearer-token: vraag een token aan met POST /api/v1/auth/token (e-mail en wachtwoord) of via Profiel in het portaal, en stuur het mee als 'Authorization: Bearer <token>'.
+- Bedragen en hoeveelheden zijn strings met een punt als decimaalteken (""123.45""); datums volgens ISO 8601.
+- Endpoints: account, aansluitingen, meterstanden (lezen en doorgeven), verbruik (granularity = hour, day, month of year), tarieven, dynamische prijzen, termijnbedrag (lezen en wijzigen), jaarafrekeningen, proefafrekening en facturen.
+- De API volgt dezelfde bedrijfsregels als het portaal. In het bijzonder: een klant kan alleen eigen gegevens opvragen (andere aansluitingen geven 404), dagverbruik van elektriciteit wordt per kalenderdag in Nederlandse tijd gegroepeerd en gasverbruik per gasdag (zoals op de verbruikspagina), en het termijnbedrag moet tussen 75% en 200% van het advies liggen.
+- Foutcodes: 401 niet ingelogd, 403 geen toegang, 404 niet gevonden, 409 bevestiging nodig (plausibiliteitswaarschuwing; stuur opnieuw met ""confirm"": true), 422 ongeldige invoer."
+WMP-111,Story,Uitloggen via de API,WMP-11,,Done,Medium,18/08/2025 10:00,15/12/2025 10:00,api,Als klant wil ik een token kunnen intrekken.,"- POST /api/v1/auth/logout trekt het gebruikte token direct in.
+- Daarna geeft elk verzoek met dat token 401."
