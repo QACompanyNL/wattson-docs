@@ -1,6 +1,6 @@
 # Wattson Energie – Quickstart testavond
 
-**Adres van de applicatie:** [URL]
+**Adres van de applicatie:** elk team heeft een eigen omgeving; het adres staat in de teamlijst die je bij de start krijgt (hieronder `<adres>`).
 
 Wattson Energie is een fictieve energieleverancier. Jullie testen het klantportaal, de backoffice en de API, met de projectdocumentatie in deze repository (begin bij `README.md`) als waarheid: elke afwijking van de documentatie is een bevinding.
 
@@ -15,11 +15,11 @@ Wattson Energie is een fictieve energieleverancier. Jullie testen het klantporta
 
 | Onderdeel | Waar |
 |---|---|
-| Klantportaal | `[URL]/mijn` (na inloggen) |
-| Backoffice | `[URL]/beheer` (inloggen als beheerder) |
-| Publieke pagina's | `[URL]/tarieven`, `[URL]/dynamische-prijzen`, `[URL]/aanmelden` |
-| Mailbox (alle uitgaande e-mail) | `[URL]/mailbox` |
-| REST API + documentatie | `[URL]/api/docs` (token via `POST /api/v1/auth/token`) |
+| Klantportaal | `<adres>/mijn` (na inloggen) |
+| Backoffice | `<adres>/beheer` (inloggen als beheerder) |
+| Publieke pagina's | `<adres>/tarieven`, `<adres>/dynamische-prijzen`, `<adres>/aanmelden` |
+| Mailbox (alle uitgaande e-mail) | `<adres>/mailbox` |
+| REST API + documentatie | `<adres>/api/docs` (token via `POST /api/v1/auth/token`) |
 
 ## Handig om te weten
 
